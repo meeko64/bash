@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+	ServerAdmin guerincelia@yahoo.fr
+	ServerName templace.wrk
+	ServerAlias www.templace.wrk
+
+	DocumentRoot /home/www/templace/web
+
+	# Coniguration spécifique Symfony 3
+	<Directory "/home/www/templace/web">
+		Require all granted
+		FallbackResource /app.php
+	</Directory>
+
+	# Ne pas laisser les utilisateurs web aller ailleurs dans ce dossier
+	<Directory "/home/www/templace/web/bundles">
+		FallbackResource disabled
+	</Directory>
+</VirtualHost>
+
